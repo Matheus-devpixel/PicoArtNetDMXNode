@@ -116,8 +116,8 @@ O binário final pronto para uso está disponível em:
 
 ## Como Recompilar por Linha de Comando
 
-Para recompilar a qualquer momento:
-- Clique duas vezes em **`compile_targets.bat`** (ou execute `python compile_targets.py`).
+Para recompilar o firmware a qualquer momento a partir do código-fonte em `src/`:
+- Execute: `python compile_targets.py`
 - O script automatizado compila o firmware com Ninja, converte o binário para o formato `.uf2` oficial do RP2040 e atualiza a pasta `binarios_finais/`.
 
 ---

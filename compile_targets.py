@@ -59,9 +59,9 @@ def bin_to_uf2(bin_path, uf2_path, base_addr=0x10000000, family_id=0xe48bff56):
 
 def setup_subst_drive():
     # Cria unidade virtual P: para contornar problemas de caracteres especiais (# no nome da pasta) no CMake/Ninja
-    if not os.path.exists("P:\\CMakeLists.txt"):
+    if not os.path.exists(r"P:\src\CMakeLists.txt"):
         subprocess.run(["subst", "P:", PROJECT_DIR], capture_output=True)
-    if os.path.exists("P:\\CMakeLists.txt"):
+    if os.path.exists(r"P:\src\CMakeLists.txt"):
         return "P:\\"
     return PROJECT_DIR
 
@@ -71,6 +71,7 @@ def build_universal():
     print("=================================================================")
     
     work_dir = setup_subst_drive()
+    src_dir = os.path.join(work_dir, "src")
     build_dir = os.path.join(work_dir, "build_universal")
     os.makedirs(build_dir, exist_ok=True)
 
@@ -78,7 +79,7 @@ def build_universal():
         cmake_bin, "-G", "Ninja",
         "-DPICO_BOARD=pico",
         f"-DCMAKE_MAKE_PROGRAM={ninja_bin}",
-        work_dir
+        src_dir
     ]
     print("Configurando com CMake...")
     p = subprocess.Popen(cmake_cmd, cwd=build_dir)
