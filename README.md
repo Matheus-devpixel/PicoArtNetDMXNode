@@ -123,7 +123,7 @@ Para cada saída DMX (GP0 a GP7):
 ## Binário Final Compilado (.UF2)
 
 O binário final pronto para uso está disponível em:
-- **`binarios_finais/artnet_dmx.uf2`**
+- **`binarios_finais/artnet_dmx.uf2`** (ou na aba de [Releases Oficiais](https://github.com/Matheus-devpixel/PicoArtNetDMXNode/releases))
 
 ### Como Gravar no Raspberry Pi RP2040:
 1. Pressione e segure o botão **BOOTSEL** na placa do Pico.

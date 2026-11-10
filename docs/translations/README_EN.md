@@ -121,7 +121,7 @@ For each DMX output (GP0 to GP7):
 ## Precompiled Binary (.UF2)
 
 Ready-to-flash binary available in:
-- **`binarios_finais/artnet_dmx.uf2`** (or via [GitHub Releases](https://github.com/Matheus-devpixel/Pico-ArtNet-DMX-Node/releases))
+- **`binarios_finais/artnet_dmx.uf2`** (or via [GitHub Releases](https://github.com/Matheus-devpixel/PicoArtNetDMXNode/releases))
 
 ### How to Flash to Raspberry Pi RP2040:
 1. Press and hold the **BOOTSEL** button on the Pico.
