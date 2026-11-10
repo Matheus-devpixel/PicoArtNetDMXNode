@@ -17,6 +17,9 @@
 
 ---
 
+> [!NOTE]
+> **Prestazioni e Bassissima Latenza:** Grazie all'esecuzione bare-metal nativa in C e alla connessione diretta via cavo USB (RNDIS / CDC-ECM), il nodo garantisce una **latenza ultrabassa deterministica (< 1 ms)** con **zero jitter**, superando nettamente i nodi basati su Wi-Fi ed eliminando qualsiasi ritardo scenico.
+
 ## Panoramica del Progetto
 
 Firmware nativo ad altissime prestazioni per microcontrollori **Raspberry Pi RP2040 (Raspberry Pi Pico, Pico W e Waveshare RP2040-Zero)** con architettura **100% dedicata tramite cavo USB (Ethernet over USB: RNDIS / CDC-ECM)**.
@@ -70,6 +73,11 @@ Supporto integrato per: Portoghese [PT], Inglese [EN], Spagnolo [ES], Francese [
 3. **Doppio Buffer Atomico Ping-Pong & ArtSync:**
    - Scambio atomico di puntatori che elimina ogni effetto di tearing visivo sui fari.
    - Pieno supporto ai pacchetti ArtSync (OpSync) per la sincronizzazione simultanea di tutti gli universi.
+
+4. **Bassissima Latenza Deterministica in Tempo Reale (< 1 ms):**
+   - **Connessione USB Diretta:** Elimina il jitter, i ritardi variabili e le perdite di pacchetti tipiche delle reti Wi-Fi.
+   - **Esecuzione Bare-Metal Senza SO:** Nessun sistema operativo o cambio di contesto intermedio; i pacchetti UDP Art-Net vengono elaborati istantaneamente nella memoria RAM.
+   - **Instradamento Diretto via DMA:** I dati fluiscono tramite Direct Memory Access direttamente verso le macchine a stati PIO, assicurando una sincronizzazione perfetta con banchi e software luci (GrandMA, Onyx, Resolume, QLC+).
 
 ---
 

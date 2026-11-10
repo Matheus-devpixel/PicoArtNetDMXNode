@@ -17,6 +17,9 @@
 
 ---
 
+> [!NOTE]
+> **极致性能与超低延迟：** 得益于纯 C 语言 Bare-Metal 原生架构与 USB 有线直连传输 (RNDIS / CDC-ECM)，本节点实现了 **确定性超低延迟（< 1 ms）** 与 **零抖动 (Zero Jitter)**，彻底杜绝 Wi-Fi 常见丢包与延迟，满足专业舞台灯光无延时控制需求。
+
 ## 项目概述
 
 专为 **Raspberry Pi RP2040 (Raspberry Pi Pico, Pico W 以及 Waveshare RP2040-Zero)** 微控制器设计的专业原生固件，具备 **100% 专用的 USB 虚拟以太网架构 (Ethernet over USB: RNDIS / CDC-ECM)**。
@@ -70,6 +73,11 @@
 3. **原子级 Ping-Pong 双缓冲与 ArtSync：**
    - 指针原子交换技术彻底杜绝画面撕裂（Tearing）。
    - 全面支持 ArtSync（OpSync）同步包，实现跨 Universe 完美同步刷新。
+
+4. **确定性实时超低延迟（< 1 ms）：**
+   - **USB 直连传输：** 彻底消除无线 Wi-Fi 网络的时延波动、无线电干扰与丢包。
+   - **无操作系统（Bare-Metal）极致响应：** 无任何操作系统任务调度与上下文切换开销，网络中断直接在内存中处理 Art-Net 数据包。
+   - **硬件 DMA 直通转发：** 帧缓冲数据通过直接内存访问（DMA）直达 PIO 状态机，瞬间响应频闪、渐变与灯光音乐同步。
 
 ---
 

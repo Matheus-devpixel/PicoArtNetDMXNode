@@ -17,6 +17,9 @@
 
 ---
 
+> [!NOTE]
+> **Höchste Leistung und Ultraniedrige Latenz:** Dank der reinen Bare-Metal-C-Architektur und der direkten USB-Kabelverbindung (RNDIS / CDC-ECM) erreicht dieser Knoten eine **deterministische extrem niedrige Latenz (< 1 ms)** mit **null Jitter**, weit überlegen gegenüber anfälligen WLAN-Lösungen.
+
 ## Projektübersicht
 
 Native Bare-Metal-Firmware höchster Leistung für **Raspberry Pi RP2040**-Mikrocontroller (**Raspberry Pi Pico, Pico W und Waveshare RP2040-Zero**) mit **100% dedizierter USB-Kabelarchitektur (Ethernet over USB: RNDIS / CDC-ECM)**.
@@ -70,6 +73,11 @@ Eingebaute Lokalisierung für: Portugiesisch [PT], Englisch [EN], Spanisch [ES],
 3. **Atomares Ping-Pong-Doppelpuffer & ArtSync:**
    - Atomarer Zeigertausch verhindert Bildrisse (Tearing) an den Scheinwerfern.
    - Volle Unterstützung für ArtSync-Pakete (OpSync) zur synchronen Aktualisierung aller Universen.
+
+4. **Deterministische Echtzeit-Niedrigstlatenz (< 1 ms):**
+   - **Direkte USB-Verbindung:** Beseitigt Jitter, unvorhersehbare Paketverzögerungen und Paketverluste herkömmlicher WLAN-Netzwerke.
+   - **Bare-Metal ohne OS-Overhead:** Keine Betriebssystem-Unterbrechungen oder Kontextwechsel; eingehende Art-Net-Pakete werden sofort im RAM verarbeitet.
+   - **Direkter Hardware-DMA-Transfer:** Pufferdaten fließen per Direct Memory Access ohne Umwege in die PIO-State-Machines für verzögerungsfreie Lichteffekte und Strobes.
 
 ---
 

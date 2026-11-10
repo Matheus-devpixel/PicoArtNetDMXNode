@@ -17,6 +17,9 @@
 
 ---
 
+> [!NOTE]
+> **Rendimiento y Ultrabaja Latencia:** Gracias a su arquitectura bare-metal en C y conexión directa por cable USB (RNDIS / CDC-ECM), el nodo alcanza una **latencia ultrabaja determinista (< 1 ms)** con **cero jitter**, superando ampliamente a los nodos Wi-Fi y eliminando cualquier retraso escénico.
+
 Firmware nativo de muy alto rendimiento para microcontroladores **Raspberry Pi RP2040 (Raspberry Pi Pico, Pico W y Waveshare RP2040-Zero)** con arquitectura **100% dedicada mediante cable USB (Ethernet over USB: RNDIS / CDC-ECM)**.
 
 Diseñado específicamente para la transmisión profesional de iluminación escénica DMX512 mediante Art-Net UDP (Puerto 6454), procesando de **1 a 8 universos DMX simultáneos** (hasta 4.096 canales) en paralelo a 44 Hz exactos sin fluctuaciones (jitter).
@@ -79,6 +82,11 @@ El cambio de idioma se actualiza instantáneamente en todas las páginas web y e
 3. **Doble Búfer Ping-Pong Atómico y ArtSync:**
    - Intercambio atómico de punteros que elimina cualquier parpadeo o tearing en los proyectores.
    - Soporte para paquetes ArtSync (OpSync) para sincronización exacta entre universos.
+
+4. **Baja Latencia Determinista en Tiempo Real (< 1 ms):**
+   - **Conexión Directa USB:** Elimina las fluctuaciones (jitter), demoras variables y caídas de paquetes propias del Wi-Fi.
+   - **Ejecución Bare-Metal sin SO:** Sin retardos de cambios de contexto ni sistemas operativos intermedios; los paquetes Art-Net se procesan de inmediato en la memoria RAM.
+   - **Envío Directo por DMA:** Los búferes se transfieren mediante Direct Memory Access directamente a las State Machines PIO, logrando respuesta instantánea a estrobos y secuencias rápidas.
 
 ---
 

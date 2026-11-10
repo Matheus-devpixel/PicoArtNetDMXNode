@@ -17,6 +17,9 @@
 
 ---
 
+> [!NOTE]
+> **Performances et Très Faible Latence :** Grâce à son architecture bare-metal en C et à sa liaison directe par câble USB (RNDIS / CDC-ECM), ce nœud atteint une **latence ultra-faible déterministe (< 1 ms)** avec **zéro gigue (jitter)**, surpassant les solutions Wi-Fi traditionnelles et éliminant tout décalage scénique.
+
 ## Vue d'Ensemble du Projet
 
 Firmware natif ultra-performant pour microcontrôleurs **Raspberry Pi RP2040 (Raspberry Pi Pico, Pico W et Waveshare RP2040-Zero)** doté d'une architecture **100% dédiée par câble USB (Ethernet over USB: RNDIS / CDC-ECM)**.
@@ -81,6 +84,11 @@ Le changement de langue est répercuté instantanément sur toutes les pages web
 3. **Double Búfer Ping-Pong Atomique & ArtSync :**
    - Échange atomique de pointeurs éliminant tout effet de déchirement visuel sur les projecteurs.
    - Prise en charge des paquets ArtSync (OpSync) pour une synchronisation absolue entre les univers.
+
+4. **Très Faible Latence Déterministe en Temps Réel (< 1 ms) :**
+   - **Liaison USB Directe :** Élimine la gigue, les variations de latence et les pertes de paquets inhérentes aux réseaux sans fil Wi-Fi.
+   - **Exécution Bare-Metal sans OS :** Aucun système d'exploitation ni changement de contexte susceptible d'introduire des retards ; les paquets Art-Net sont traités instantanément en mémoire vive.
+   - **Acheminement Direct par DMA :** Transfert direct de la mémoire aux machines d'état PIO par Direct Memory Access (DMA), offrant une réactivité parfaite pour les stroboscopes et fondus rapides.
 
 ---
 

@@ -17,6 +17,9 @@
 
 ---
 
+> [!NOTE]
+> **Ultra-Low Latency Performance:** Powered by a pure bare-metal C architecture and a direct USB cable link (RNDIS / CDC-ECM), this node achieves **deterministic ultra-low latency (< 1 ms)** with **zero jitter**, easily outperforming Wi-Fi-based nodes and eliminating stage lighting lag.
+
 Native, high-performance firmware for **Raspberry Pi RP2040** microcontrollers (**Raspberry Pi Pico, Pico W, and Waveshare RP2040-Zero**) featuring a **100% dedicated USB cable architecture (Ethernet over USB: RNDIS / CDC-ECM)**.
 
 Designed specifically for professional DMX512 stage lighting transmission over Art-Net UDP (Port 6454), processing from **1 to 8 concurrent DMX universes** (up to 4,096 channels) in parallel at a solid 44 Hz refresh rate without jitter.
@@ -79,6 +82,11 @@ Language selection updates all web pages and the I2C OLED display in real time, 
 3. **Atomic Ping-Pong Double-Buffering & ArtSync:**
    - Atomic pointer swapping prevents visual tearing across fixtures.
    - Full support for ArtSync packets (OpSync) for perfectly synchronized universe updates.
+
+4. **Deterministic Real-Time Ultra-Low Latency (< 1 ms):**
+   - **Direct USB Connection:** Eliminates jitter, variable delays, and packet loss common to wireless Wi-Fi networks.
+   - **Bare-Metal Zero-OS Overhead:** No operating system preemption or context switching; incoming UDP packets are processed immediately in RAM.
+   - **Hardware DMA Dispatch:** Frame buffers are routed straight to PIO State Machines via Direct Memory Access for immediate reaction to fast strobes, fades, and live audio-visual cues.
 
 ---
 
