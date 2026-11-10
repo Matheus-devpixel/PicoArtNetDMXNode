@@ -1,4 +1,23 @@
-# Pico ArtNet DMX Node (Raspberry Pi Pico RP2040 - USB Ethernet Bare-Metal)
+<div align="center">
+
+# Pico ArtNet DMX Node (Raspberry Pi Pico RP2040)
+
+**Firmware nativo bare-metal de altíssimo desempenho para controle profissional de iluminação cênica DMX512 via USB Ethernet (RNDIS / CDC-ECM)**
+
+[![Português](https://img.shields.io/badge/Idioma-Portugu%C3%AAs-blue?style=for-the-badge)](#)
+[![English](https://img.shields.io/badge/Language-English-green?style=for-the-badge)](docs/translations/README_EN.md)
+[![Español](https://img.shields.io/badge/Idioma-Espa%C3%B1ol-yellow?style=for-the-badge)](docs/translations/README_ES.md)
+[![Français](https://img.shields.io/badge/Langue-Fran%C3%A7ais-red?style=for-the-badge)](docs/translations/README_FR.md)
+[![Deutsch](https://img.shields.io/badge/Sprache-Deutsch-orange?style=for-the-badge)](docs/translations/README_DE.md)
+[![Italiano](https://img.shields.io/badge/Lingua-Italiano-teal?style=for-the-badge)](docs/translations/README_IT.md)
+[![Русский](https://img.shields.io/badge/%D0%AF%D0%B7%D1%8B%D0%BA-%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-purple?style=for-the-badge)](docs/translations/README_RU.md)
+[![中文](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-lightgrey?style=for-the-badge)](docs/translations/README_ZH.md)
+
+</div>
+
+---
+
+## Visão Geral do Projeto
 
 Firmware nativo de altíssimo desempenho para microcontroladores **Raspberry Pi RP2040 (Raspberry Pi Pico, Pico W e Waveshare RP2040-Zero)** com arquitetura **100% dedicada via cabo USB (Ethernet over USB: RNDIS / CDC-ECM)**.
 
