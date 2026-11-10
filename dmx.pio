@@ -1,0 +1,64 @@
+;
+; ============================================================================
+; PROJETO: PICO ARTNET DMX NODE (RP2040)
+; ARQUIVO: dmx.pio
+; AUTOR: Matheus Dev (@Matheus-devpixel)
+; DESCRIÇÃO: Transmissor UART serial DMX512-A bare-metal implementado nas
+;            máquinas de estado PIO (Programmable I/O) do Raspberry Pi RP2040.
+;
+; ESPECIFICAÇÕES DO PROTOCOLO DMX512-A:
+;   - Taxa de transmissão: 250.000 baud exatos (4.0 us por bit).
+;   - Formato de cada slot: 1 Start bit (LOW) + 8 Data bits (LSB primeiro) + 2 Stop bits (HIGH) = 8N2.
+;   - Temporização por ciclo: O clock do State Machine é configurado para 1.0 MHz (1 ciclo = 1 us).
+;     Portanto, cada bit DMX consome exatamente 4 ciclos de clock da PIO.
+; ============================================================================
+
+.program dmx_out
+.side_set 1 opt
+
+; Clock da State Machine configurado para 1 MHz (1 tick = 1 us).
+; Cada bit a 250 kbaud dura 4 us (4 ciclos de instrução).
+
+.wrap_target
+    pull block              side 1   ; Aguarda byte da FIFO (bloqueante). Mantém linha DMX em nível IDLE (HIGH).
+    set x, 7                side 0   ; Transmite Start bit (nível LOW). Inicializa contador do loop em 7 (8 bits no total).
+    nop                     [2]      ; Completa 4 us de duração do Start bit (1 ciclo do set + 3 ciclos de delay).
+bitloop:
+    out pins, 1                      ; Desloca 1 bit de dados (LSB) para o pino GPIO de saída DMX.
+    jmp x-- bitloop         [2]      ; Decrementa contador e repete se x >= 0. Mantém o bit por 4 us (1 out + 1 jmp + 2 delay).
+    nop                     side 1   ; Transmite o Stop bit 1 em nível HIGH.
+    nop                     [5]      ; Transmite o Stop bit 2 em nível HIGH. Totaliza 8 us de tempo de parada (2 stop bits).
+.wrap
+
+% c-sdk {
+#include "hardware/clocks.h"
+
+/**
+ * @brief Configura e habilita uma State Machine do PIO para operar como transmissor DMX512 (8N2 a 250 kbaud).
+ * 
+ * @param pio Instância do bloco PIO (pio0 ou pio1).
+ * @param sm Número da State Machine alocada (0 a 3).
+ * @param offset Posição de memória do microcódigo dmx_out carregado no PIO.
+ * @param pin Pino GPIO de saída serial (GP0 a GP7).
+ */
+static inline void dmx_out_program_init(PIO pio, uint sm, uint offset, uint pin) {
+    pio_gpio_init(pio, pin);
+    pio_sm_set_consecutive_pindirs(pio, sm, pin, 1, true);
+
+    pio_sm_config c = dmx_out_program_get_default_config(offset);
+    sm_config_set_out_pins(&c, pin, 1);
+    sm_config_set_set_pins(&c, pin, 1);
+    sm_config_set_sideset_pins(&c, pin);
+    
+    // Shift register configurado para LSB first, autopull desativado (usamos instrução pull block de 8 bits)
+    sm_config_set_out_shift(&c, true, false, 8);
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_TX);
+
+    // Divisor de clock fracionário para gerar exatamente 1.0 MHz a partir do clock do sistema (clk_sys)
+    float div = (float)clock_get_hz(clk_sys) / 1000000.0f;
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}
