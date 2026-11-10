@@ -131,7 +131,7 @@ Para recompilar a qualquer momento:
 
 ## Ferramenta de Teste de Transmissão (ArtNet_Test.py)
 
-O repositório inclui um gerador e testador de estresse em Python de alta precisão ([`ArtNet_Test.py`](file:///F:/PROJETOS%20EMBARCADOS/pi%20pico%20w%20dmx%20artnet%20C%23/artnet_dmx/ArtNet_Test.py)) capaz de transmitir até 4.096 canais DMX simultâneos (8 universos de 512 canais) a 60 FPS cravados sem jitter:
+O repositório inclui um gerador e testador de estresse em Python de alta precisão ([`ArtNet_Test.py`](ArtNet_Test.py)) capaz de transmitir até 4.096 canais DMX simultâneos (8 universos de 512 canais) a 60 FPS cravados sem jitter:
 
 ```bash
 # Execução padrão (simulação completa de palco com moving heads, RGB wash, pixels e strobes)
